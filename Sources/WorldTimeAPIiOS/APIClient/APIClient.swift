@@ -20,7 +20,7 @@ protocol APIClient {
 final class APIClientImpl: APIClient {
     func request<T>(_ entity: T) async throws -> T.ResponseEntity where T: APIRequest {
         let url = entity.url
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
 
         guard let requestURL = components?.url else {
             throw APIClientError.invalidURL
